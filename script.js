@@ -1,21 +1,20 @@
-// Select all price cells
-const prices = document.querySelectorAll(".price");
+document.getElementById("btn").addEventListener("click", function () {
 
-let total = 0;
+  const prices = document.querySelectorAll(".price");
+  let total = 0;
 
-// Add all prices
-prices.forEach(price => {
-  total += Number(price.textContent);
+  prices.forEach((p) => {
+    total += Number(p.textContent);
+  });
+
+  const table = document.getElementById("grocery-table");
+
+  const row = document.createElement("tr");
+  const cell = document.createElement("td");
+  cell.colSpan = 2;
+  cell.textContent = "Total Price: " + total;
+
+  row.appendChild(cell);
+  table.appendChild(row);
+
 });
-
-// Create new row
-const totalRow = document.createElement("tr");
-const totalCell = document.createElement("td");
-
-// One cell across two columns
-totalCell.colSpan = 2;
-totalCell.textContent = "Total Price: " + total;
-
-// Add row to table
-totalRow.appendChild(totalCell);
-document.querySelector("table").appendChild(totalRow);
