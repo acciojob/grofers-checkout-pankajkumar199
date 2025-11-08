@@ -1,11 +1,21 @@
-const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
-document.body.appendChild(getSumBtn);
+// Select all price cells
+const prices = document.querySelectorAll(".price");
 
-const getSum = () => {
-//Add your code here
-  
-};
+let total = 0;
 
-getSumBtn.addEventListener("click", getSum);
+// Add all prices
+prices.forEach(price => {
+  total += Number(price.textContent);
+});
 
+// Create new row
+const totalRow = document.createElement("tr");
+const totalCell = document.createElement("td");
+
+// One cell across two columns
+totalCell.colSpan = 2;
+totalCell.textContent = "Total Price: " + total;
+
+// Add row to table
+totalRow.appendChild(totalCell);
+document.querySelector("table").appendChild(totalRow);
